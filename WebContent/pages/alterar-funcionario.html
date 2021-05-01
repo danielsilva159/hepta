@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico" />
+<title>Cadastrar um novo Produto</title>
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/bootstrap.min.css">
+<!-- 	<link rel="stylesheet" type="text/css" -->
+<!-- 		href="../resources/css/main.css"> -->
+</head>
+
+<body>
+
+	<a href="/funcionarios/index.html">Voltar</a>
+
+
+
+	<div id="app">
+		 	<p v-if="mensagem">{{mensagem}}</p> 
+
+		<h4>Cadastro de funcionário</h4>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="nome">Nome</label> <input type="text"
+					class="form-control" id="nome"
+					aria-describedby="emailHelp" placeholder="Nome" v-model="nome">
+			</div>
+			<div class="form-group">
+				<label for="idade">Idade</label> <input
+					type="number" class="form-control" id="idade"
+					placeholder="idade" v-model="idade">
+			</div>
+			<div class="form-group">
+				<label for="salario">Salario</label> <input type="text"
+					class="form-control" id="salario"
+					 placeholder="Salario" v-model="salario">
+			</div>
+			<div class="form-group">
+				<label for="email">E-mail</label> <input type="email"
+					class="form-control" id="email"
+					 placeholder="E-mail" v-model="email">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Selecione um setor</label> <select
+					class="form-control" id="exampleFormControlSelect1" v-model="setor">
+					<option disabled selected="selected" >Escolha um setor</option>
+					<option v-for="setor in listaSetor" v-bind:value="setor.id">{{setor.nome}}</option>
+
+				</select>
+			</div>
+			<button type="submit" @click="enviarFormulario" class="btn btn-primary">Submit</button>
+		</div>
+	</div>
+	
+	<script src="../resources/js/vue.js"></script>
+	<script src="../resources/js/axios.min.js"></script>
+	<script src="../resources/js/cadastro-de-funcionario.js"></script>
+</body>
+</html>

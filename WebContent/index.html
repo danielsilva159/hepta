@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="favicon.ico" />
+<title>Funcionários - Início</title>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap-vue.css">
+<link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+
+
+</head>
+
+<body>
+
+
+	<div id="inicio" class="container-fluid table">
+		<h4>Lista dos Funcionários</h4>
+		<a href="/funcionarios/pages/novo-funcionario.html"
+			class="btn btn-primary">Novo Funcionario</a> <a href="#"
+			class="btn btn-success">Novo Setor</a>
+		<table>
+			<tr>
+				<th>Nome</th>
+				<th>Setor</th>
+				<th>Salário</th>
+				<th>Email</th>
+				<th>Idade</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tbody id="event-table">
+				<tr v-for="funcionario in listaProdutos">
+					<td>{{ funcionario.nome }}</td>
+					<td>{{ funcionario.setor.nome }}</td>
+					<td>{{ funcionario.salario }}</td>
+					<td>{{ funcionario.email }}</td>
+					<td>{{ funcionario.idade }}</td>
+					<td><span @click="editar(funcionario.id)">&#9998;</span>
+						<button v-on:click="abrirModal(funcionario.id, funcionario.nome)">&#10006;</button></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<excluir-funcionario v-if="showModal" @close="showModal = false" :funcionario="idFuncionario"
+		 texto="Confirma a exclusão do funcionario?" :valor="nome"> </excluir-funcionario>
+
+		<div></div>
+		<nav>
+			<router-link to="/">Home</router-link>
+			<router-link to="/login">Login</router-link>
+			<router-link to="/pages/novo-funcionario.html">About</router-link>
+		</nav>
+		<router-view></router-view>
+	</div>
+
+
+
+	<script src="resources/js/vue.js"></script>
+	<script src="resources/js/vue-router.js"></script>
+	<script src="resources/js/bootstrap-vue.js"></script>
+	<script src="resources/js/axios.min.js"></script>
+	<script src="resources/js/index.js"></script>
+	<script src="resources/js/modal-excluir.js"></script>
+</body>
+</html>
